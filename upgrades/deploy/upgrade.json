@@ -1,0 +1,7 @@
+{
+  "name": "devtools-deploy",
+  "version": "0.1.0",
+  "dependencies": {
+    "devtools": "0.1.0"
+  }
+}

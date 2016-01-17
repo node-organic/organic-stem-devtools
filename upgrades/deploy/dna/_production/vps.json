@@ -1,0 +1,6 @@
+{
+  "remote": "{{{production server user}}}@{{{production domain}}}",
+  "local": "dna/_production/ubuntu-setup.sh",
+  "dest": "/home/root/ubuntu-setup.sh",
+  "shell": "/bin/bash"
+}

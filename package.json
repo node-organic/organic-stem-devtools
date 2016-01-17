@@ -1,0 +1,24 @@
+{
+  "name": "organic-stem-devtools",
+  "version": "0.1.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Boris Filipov",
+  "license": "MIT",
+  "dependencies": {
+    "async": "^1.5.0",
+    "git-last-commit": "^0.1.1",
+    "glob": "^6.0.1",
+    "glob2base": "0.0.12",
+    "gulp": "^3.9.0",
+    "gulp-debug": "^2.1.2",
+    "gulp-util": "^3.0.7",
+    "killprocess": "0.0.2",
+    "vinyl-named": "^1.1.0"
+  },
+  "devDependencies": {
+    "node-notifier": "^4.4.0"
+  }
+}

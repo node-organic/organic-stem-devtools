@@ -1,0 +1,23 @@
+{
+  "src": "client/apps",
+  "dest": {
+    "build": "build/{version}",
+    "watch": "build/current",
+    "link": "public/release"
+  },
+  "assets": [
+    { "src": "glob relative to cwd", "dest": "path relative to dest.link" }
+  ],
+  "commands": {
+    "build": [
+      "node ./node_modules/.bin/angel buildjs",
+      "node ./node_modules/.bin/angel buildcss",
+      "node ./node_modules/.bin/angel buildassets"
+    ],
+    "watch": [
+      "node ./node_modules/.bin/angel watchjs",
+      "node ./node_modules/.bin/angel watchcss",
+      "node ./node_modules/.bin/angel watchassets"
+    ]
+  }
+}
