@@ -20,5 +20,14 @@
   },
   "devDependencies": {
     "node-notifier": "^4.4.0"
-  }
+  },
+  "description": "`organic-stem-skeleton` upgrade providing command line tools for web development.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/outbounder/organic-stem-devtools.git"
+  },
+  "bugs": {
+    "url": "https://github.com/outbounder/organic-stem-devtools/issues"
+  },
+  "homepage": "https://github.com/outbounder/organic-stem-devtools"
 }
