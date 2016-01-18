@@ -25,11 +25,13 @@
 
   ```
   $ angel stack use devtools-less
+
   $ angel stack use devtools-webpack
+  -- or --
   $ angel stack use devtools-browserify
   ```
 
-4. use deply tools
+4. use deploy tools
 
   ```
   $ angel stack use devtools-deply
