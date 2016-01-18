@@ -35,7 +35,7 @@ module.exports = function (angel) {
               lessWatcher(config),
               less(config)
             ],
-            dest: options.dest.watch + destRelative
+            dest: path.join(options.dest.watch, destRelative)
           }).on('end', function () {
             console.log('css watch successfully')
           })
