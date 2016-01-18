@@ -34,5 +34,33 @@
 4. use deploy tools
 
   ```
-  $ angel stack use devtools-deply
+  $ angel stack use devtools-deploy
+  ```
+
+## how to run tests
+
+```
+npm test
+```
+
+### pre-test steps
+
+1. define stemskeleton.json
+
+  ```
+  $ cd organic-stem-devtools
+  $ echo '"/full/path/to/organic-stem-skeleton"' > stemskeleton.json
+  ```
+
+2. **optimize performance** and install all stack upgrades
+
+  ```
+  $ cd /full/path/to/organic-stem-skeleton
+  $ angel stack use devtools &&
+  angel stack use devtools-client &&
+  angel stack use devtools-deploy &&
+  angel stack use devtools-less &&
+  angel stack use devtools-webpack &&
+  angel stack use devtools-browserify &&
+  git reset --hard HEAD
   ```

@@ -2,7 +2,7 @@ module.exports = function (angel) {
   angel.on('buildjs', function () {
     var loadDNA = require('organic-dna-loader')
     var browserify = require('browserify')
-    var gulp = require('gulp')
+    var gulp = require('organic-stem-devtools/node_modules/gulp')
     var source = require('vinyl-source-stream')
     var assign = require('lodash').assign
     var globby = require('globby')
