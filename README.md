@@ -9,26 +9,28 @@
 
 1. use devtools core upgrade
 
-```
-$ angel stack use git@github.com:outbounder/organic-stem-devtools.git
-```
+  ```
+  $ angel stack use git@github.com:outbounder/organic-stem-devtools.git
+  -- or --
+  $ angel stack use devtools
+  ```
 
 2. use client core upgrade
 
-```
-$ angel stack use devtools-client
-```
+  ```
+  $ angel stack use devtools-client
+  ```
 
 3. use client tools
 
-```
-$ angel stack use devtools-less
-$ angel stack use devtools-webpack
-$ angel stack use devtools-browserify
-```
+  ```
+  $ angel stack use devtools-less
+  $ angel stack use devtools-webpack
+  $ angel stack use devtools-browserify
+  ```
 
 4. use deply tools
 
-```
-$ angel stack use devtools-deply
-```
+  ```
+  $ angel stack use devtools-deply
+  ```
