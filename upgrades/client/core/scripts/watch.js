@@ -6,6 +6,7 @@ module.exports = function (angel) {
     var parallel = require('organic-stem-devtools/lib/parallel-exec')
 
     loadDNA(function (err, dna) {
+      if (err) return next(err)
       var options = dna.client.build
       var cwd = process.cwd()
       exec('ln -sfT ' + path.join(cwd, options.dest.watch) + ' ' + path.join(cwd, options.dest.link), function (err) {

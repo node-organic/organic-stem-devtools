@@ -5,7 +5,7 @@ module.exports = function (angel) {
 
     var vpsConfig = require(angel.cmdData.vpsPath)
     sequence([
-      format("scp {local} {remote}:{dest}", vpsConfig),
+      format('scp {local} {remote}:{dest}', vpsConfig),
       format("ssh {remote} '{shell} -c {dest}'", vpsConfig)
     ])
   })

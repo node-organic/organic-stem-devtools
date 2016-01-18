@@ -8,6 +8,7 @@ module.exports = function (angel) {
 
     var version = require(process.cwd() + '/package.json').version
     loadDNA(function (err, dna) {
+      if (err) return next(err)
       var options = dna.client.build
       parallel(options.commands.build, function (err) {
         if (err) return next(err)
