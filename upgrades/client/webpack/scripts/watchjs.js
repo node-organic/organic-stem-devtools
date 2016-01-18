@@ -10,13 +10,13 @@ module.exports = function (angel) {
       if (err) return console.error(err)
       var options = dna.client.build
       var config = {}
-      if (options.webpack) {
-        config = require(path.join(process.cwd(), options.webpack))
+      if (options.js.webpack) {
+        config = require(path.join(process.cwd(), options.js.webpack))
       }
       config.watch = true
       runPipeline({
         name: 'watchjs',
-        src: options.src + (options['watchjs'] ? options['watchjs'].pattern : '/**/*.bundle.js'),
+        src: options['js'].src,
         pipeline: [
           sourcemaps.init(),
           webpack(config),

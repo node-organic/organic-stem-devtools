@@ -11,15 +11,15 @@
   "license": "MIT",
   "dependencies": {
     "async": "^1.5.0",
-    "git-last-commit": "^0.1.1",
     "glob": "^6.0.1",
     "glob2base": "0.0.12",
     "gulp": "^3.9.0",
     "gulp-debug": "^2.1.2",
     "gulp-util": "^3.0.7",
     "killprocess": "0.0.2",
-    "vinyl-named": "^1.1.0",
-    "node-notifier": "^4.4.0"
+    "node-notifier": "^4.4.0",
+    "string-template": "^1.0.0",
+    "vinyl-named": "^1.1.0"
   },
   "devDependencies": {
     "eslint": "^1.10.3",

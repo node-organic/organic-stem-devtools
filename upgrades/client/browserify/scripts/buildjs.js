@@ -9,7 +9,7 @@ module.exports = function (angel) {
     var uglify = require('gulp-uglify')
     var buffer = require('vinyl-buffer')
     var path = require('path')
-    var format = require('string-template')
+    var format = require('organic-stem-devtools/node_modules/string-template')
 
     var standardErrorHandler = require('organic-stem-devtools/lib/gulp-error-notifier')({
       name: 'buildjs'
@@ -19,7 +19,7 @@ module.exports = function (angel) {
     loadDNA(function (err, dna) {
       if (err) return console.error(err)
       var options = dna.client.build
-      globby([options.src + (options['buildjs'] ? options['buildjs'].pattern : '/**/*.bundle.js')])
+      globby(options['js'].src)
       .then(function (entries) {
         entries.forEach(function (entry) {
           // add custom browserify options here
@@ -31,8 +31,8 @@ module.exports = function (angel) {
           var b = browserify(opts)
 
           // apply transformations here
-          if (options.browserify && options.browserify.transformations) {
-            options.browserify.transformations.forEach(function (t) {
+          if (options.js.browserify.transformations) {
+            options.js.browserify.transformations.forEach(function (t) {
               b.transform(t)
             })
           }

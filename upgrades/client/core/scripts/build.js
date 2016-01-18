@@ -1,23 +1,32 @@
 module.exports = function (angel) {
   angel.on('build', function (angel, next) {
-    var exec = require('child_process').exec
     var path = require('path')
-    var format = require('string-template')
+    var exec = require('child_process').exec
+    var format = require('organic-stem-devtools/node_modules/string-template')
     var loadDNA = require('organic-dna-loader')
     var parallel = require('organic-stem-devtools/lib/parallel-exec')
 
+    // load configuration
     var version = require(process.cwd() + '/package.json').version
     loadDNA(function (err, dna) {
       if (err) return next(err)
       var options = dna.client.build
-      parallel(options.commands.build, function (err) {
+
+      // destination build folder (default /build/{version})
+      var destBuildPath = format(options.dest.build, {version: version})
+
+      // run in parallel pipelines building of client code
+      parallel([
+        'node ./node_modules/.bin/angel buildjs',
+        'node ./node_modules/.bin/angel buildcss',
+        'node ./node_modules/.bin/angel buildassets'
+      ], function (err) {
         if (err) return next(err)
+
+        // link build (default /build/{version} -> /public/release)
+        console.info('linking ' + destBuildPath + ' -> ' + options.dest.link)
         var cwd = process.cwd()
-        var destBuildPath = format(options.dest.build, {version: version})
-        exec('ln -sfT ' + path.join(cwd, destBuildPath) + ' ' + path.join(cwd, options.dest.link), function (err) {
-          if (err) return next(err)
-          console.info('linked ' + destBuildPath + ' -> ' + options.dest.link)
-        })
+        exec('ln -sfT ' + path.join(cwd, destBuildPath) + ' ' + path.join(cwd, options.dest.link), next)
       })
     })
   })

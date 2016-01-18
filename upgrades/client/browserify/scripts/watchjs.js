@@ -17,7 +17,7 @@ module.exports = function (angel) {
     loadDNA(function (err, dna) {
       if (err) return console.error(err)
       var options = dna.client.build
-      globby([options.src + (options['watchjs'] ? options['watchjs'].pattern : '/**/*.bundle.js')])
+      globby(options['js'].src)
       .then(function (entries) {
         entries.forEach(function (entry) {
           // add custom browserify options here
@@ -31,8 +31,8 @@ module.exports = function (angel) {
           b.on('log', gutil.log) // output build logs to terminal
 
           // apply transformations here
-          if (options.browserify && options.browserify.transformations) {
-            options.browserify.transformations.forEach(function (t) {
+          if (options.js.browserify.transformations) {
+            options.js.browserify.transformations.forEach(function (t) {
               b.transform(t)
             })
           }

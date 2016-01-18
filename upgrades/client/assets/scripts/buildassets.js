@@ -2,7 +2,7 @@ module.exports = function (angel) {
   angel.on('buildassets', function (angel, next) {
     var loadDNA = require('organic-dna-loader')
     var runPipeline = require('organic-stem-devtools/lib/gulp-pipeline')
-    var format = require('string-template')
+    var format = require('organic-stem-devtools/node_modules/string-template')
     var path = require('path')
 
     var version = require(process.cwd() + '/package.json').version
