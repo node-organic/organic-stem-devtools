@@ -10,9 +10,9 @@
 1. use devtools core upgrade
 
   ```
-  $ angel stack use git@github.com:outbounder/organic-stem-devtools.git
-  -- or --
+  $ npm install organic-stem-devtools
   $ angel stack use devtools
+  ... install any devtools addon upgrades, see $ angel stack list
   ```
 
 2. use any of the follow up upgrades provided from the package
@@ -34,7 +34,7 @@
 
   Checkout:
   * `scripts/build.js`
-  * `scripts/watch.js` for details.
+  * `scripts/watch.js`
 
 2. use devtools
 
@@ -60,7 +60,7 @@
   This upgrade provide support for `*.bundle.css` files via `less`.
 
   Checkout:
-  * `dna/client/build.json` -> `buildcss` section
+  * `dna/client/build.json` -> `css` section
   * `scripts/buildcss.js`
   * `scripts/watchcss.js`
 
@@ -73,7 +73,7 @@
   This upgrade provide support for `*.bundle.js` files via `webpack`.
 
   Checkout:
-  * `dna/client/build.json` -> `buildjs` section
+  * `dna/client/build.json` -> `js` section
   * `scripts/buildjs.js`
   * `scripts/watchjs.js`
 
@@ -86,7 +86,7 @@
   This upgrade provide support for `*.bundle.js` files via `browserify`.
 
   Checkout:
-  * `dna/client/build.json` -> `buildjs` section
+  * `dna/client/build.json` -> `js` section
   * `scripts/buildjs.js`
   * `scripts/watchjs.js`
 
@@ -109,23 +109,19 @@
 
 ## how to run tests
 
-```
-npm test
-```
-
-### pre-test steps
-
-1. define stemskeleton.json
+1. define `mock-stemskeleton.json` into the repo's root folder
 
   ```
   $ cd organic-stem-devtools
-  $ echo '"/full/path/to/organic-stem-skeleton"' > stemskeleton.json
+  $ echo '"/full/path/to/stem-seed"' > mock-stemskeleton.json
   ```
 
 2. **optimize performance** and install all stack upgrades
 
   ```
-  $ cd /full/path/to/organic-stem-skeleton
+  $ cd /full/path/to/stem-seed
+  $ npm install angelscripts-stack-use organic-stem-skeleton
+  $
   $ angel stack use devtools &&
   angel stack use devtools-client &&
   angel stack use devtools-deploy &&

@@ -1,5 +1,5 @@
 {
   "dependencies": {
-    "organic-stem-devtools": ">=0.1.0"
+    "organic-stem-devtools": "^0.1.x"
   }
 }

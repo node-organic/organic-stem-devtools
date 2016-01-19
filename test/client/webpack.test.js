@@ -1,5 +1,5 @@
 describe('devtools-client', function () {
-  var stemCell = new StemSkeleton(require(process.cwd() + '/stemskeleton.json'))
+  var stemCell = new StemSkeleton(require(process.cwd() + '/mock-stemskeleton.json'))
   before(function (next) {
     stemCell.mockTestFolder(next)
   })
