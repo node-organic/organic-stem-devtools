@@ -12,7 +12,7 @@ module.exports = function (angel) {
 
       // link watch (default /build/current -> /public/release)
       var cwd = process.cwd()
-      exec('ln -sfT ' + path.join(cwd, options.dest.watch) + ' ' + path.join(cwd, options.dest.link), function (err) {
+      exec('ln -sf ' + path.join(cwd, options.dest.watch) + ' ' + path.join(cwd, options.dest.link), function (err) {
         if (err) return next(err)
         console.info('linked ' + options.dest.watch + ' -> ' + options.dest.link)
 

@@ -2,8 +2,9 @@
   "name": "organic-stem-devtools",
   "version": "0.1.5",
   "main": "index.js",
+  "description": "`organic-stem-skeleton` upgrade providing command line tools for web development.",
   "scripts": {
-    "test": "mocha",
+    "test": "npm run test:style && mocha",
     "test:style": "eslint ./",
     "release-patch": "npm run test:style && npm version patch && npm publish && git push --tags && git push origin master"
   },
@@ -29,7 +30,6 @@
     "chai": "^3.4.1",
     "mocha": "^2.3.4"
   },
-  "description": "`organic-stem-skeleton` upgrade providing command line tools for web development.",
   "repository": {
     "type": "git",
     "url": "https://github.com/outbounder/organic-stem-devtools.git"

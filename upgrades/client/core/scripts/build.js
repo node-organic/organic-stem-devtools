@@ -26,7 +26,7 @@ module.exports = function (angel) {
         // link build (default /build/{version} -> /public/release)
         console.info('linking ' + destBuildPath + ' -> ' + options.dest.link)
         var cwd = process.cwd()
-        exec('ln -sfT ' + path.join(cwd, destBuildPath) + ' ' + path.join(cwd, options.dest.link), next)
+        exec('ln -sf ' + path.join(cwd, destBuildPath) + ' ' + path.join(cwd, options.dest.link), next)
       })
     })
   })

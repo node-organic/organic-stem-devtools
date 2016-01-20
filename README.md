@@ -40,11 +40,11 @@
 
   #### devtools-assets
 
+  This upgrade provide support for copying static assets from various source folders to build/watch destination.
+
   ```
   $ angel stack use devtools-assets
   ```
-
-  This upgrade provide support for asset files.
 
   Checkout:
   * `dna/client/build.json` -> `assets` section
@@ -53,11 +53,11 @@
 
   #### devtools-less
 
+  This upgrade provide support for `*.bundle.css` files via `less`.
+
   ```
   $ angel stack use devtools-less
   ```
-
-  This upgrade provide support for `*.bundle.css` files via `less`.
 
   Checkout:
   * `dna/client/build.json` -> `css` section
@@ -66,11 +66,11 @@
 
   #### devtools-webpack
 
+  This upgrade provide support for `*.bundle.js` files via `webpack`.
+
   ```
   $ angel stack use devtools-webpack
   ```
-
-  This upgrade provide support for `*.bundle.js` files via `webpack`.
 
   Checkout:
   * `dna/client/build.json` -> `js` section
@@ -79,11 +79,11 @@
 
   #### devtools-browserify
 
+  This upgrade provide support for `*.bundle.js` files via `browserify`.
+
   ```
   $ angel stack use devtools-browserify
   ```
-
-  This upgrade provide support for `*.bundle.js` files via `browserify`.
 
   Checkout:
   * `dna/client/build.json` -> `js` section
@@ -92,11 +92,11 @@
 
 ### devtools-deploy
 
+  This upgrade provide support for deploy and release at remote servers.
+
   ```
   $ angel stack use devtools-deploy
   ```
-
-  This upgrade provide support for deploy and release at remote servers.
 
   Checkout:
   * `dna/_production` folder
