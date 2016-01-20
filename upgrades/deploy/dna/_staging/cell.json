@@ -15,8 +15,8 @@
   "status": "{sourceNode} && cd {cwd} && pm2 status {name}",
   "build": "{sourceNode} && cd {cwd} && {runAngel} build",
   "install": "mkdir -p {cwd} && cd {cwd} && git clone {source} . && {sourceNode} && npm install --production",
-  "upgrade": " cd {cwd} && git fetch {origin} && git checkout {branch} && git pull {origin} {branch} && {sourceNode} && npm install --production && {build} && {stop} && {start}",
-  "upgrade-without-build": " cd {cwd} && git fetch {origin} && git checkout {branch} && git pull {origin} {branch} && {sourceNode} && npm install --production && {stop} && {start}",
+  "upgrade": " cd {cwd} && git fetch {origin} && git checkout {branch} && git pull {origin} {branch} && {sourceNode} && npm install --production && {build} && {restart}",
+  "upgrade-without-build": " cd {cwd} && git fetch {origin} && git checkout {branch} && git pull {origin} {branch} && {sourceNode} && npm install --production && {restart}",
   "uninstall": "rm -rf {cwd}",
   "setup": "git clone https://github.com/creationix/nvm.git ~/.nvm && . ~/.nvm/nvm.sh && nvm install v{nodeVersion} && npm install pm2 -g && {install} && {start} && pm2 startup"
 }
