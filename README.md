@@ -15,6 +15,9 @@
   ... install any devtools addon upgrades, see $ angel stack list
   ```
 
+  After upgrade git diff:
+  * `scripts/develop.js`
+
 2. use any of the follow up upgrades provided from the package
 
 ### devtools-client
@@ -32,7 +35,7 @@
   $ angel watch
   ```
 
-  Checkout:
+  After upgrade git diff:
   * `scripts/build.js`
   * `scripts/watch.js`
 
@@ -46,46 +49,46 @@
   $ angel stack use devtools-assets
   ```
 
-  Checkout:
+  After upgrade git diff:
   * `dna/client/build.json` -> `assets` section
   * `scripts/buildassets.js`
   * `scripts/watchassets.js`
 
   #### devtools-less
 
-  This upgrade provide support for `*.bundle.css` files via `less`.
+  This upgrade provide support for `*.bundle.css` files via [less](https://github.com/less/less.js)
 
   ```
   $ angel stack use devtools-less
   ```
 
-  Checkout:
+  After upgrade git diff:
   * `dna/client/build.json` -> `css` section
   * `scripts/buildcss.js`
   * `scripts/watchcss.js`
 
   #### devtools-webpack
 
-  This upgrade provide support for `*.bundle.js` files via `webpack`.
+  This upgrade provide support for `*.bundle.js` files via [webpack](https://github.com/webpack/webpack)
 
   ```
   $ angel stack use devtools-webpack
   ```
 
-  Checkout:
+  After upgrade git diff:
   * `dna/client/build.json` -> `js` section
   * `scripts/buildjs.js`
   * `scripts/watchjs.js`
 
   #### devtools-browserify
 
-  This upgrade provide support for `*.bundle.js` files via `browserify`.
+  This upgrade provide support for `*.bundle.js` files via [browserify](https://github.com/substack/node-browserify)
 
   ```
   $ angel stack use devtools-browserify
   ```
 
-  Checkout:
+  After upgrade git diff:
   * `dna/client/build.json` -> `js` section
   * `scripts/buildjs.js`
   * `scripts/watchjs.js`
@@ -98,7 +101,7 @@
   $ angel stack use devtools-deploy
   ```
 
-  Checkout:
+  After upgrade git diff:
   * `dna/_production` folder
   * `dna/_staging` folder
   * `scripts/deploy.js`
@@ -106,10 +109,17 @@
   * [angelscripts-cellcmds](https://github.com/outbounder/angelscripts-cellcmds) package
   * [angelscripts-nginx](https://github.com/outbounder/angelscripts-nginx) package
 
+### devtools-nodemon
+
+  This upgrade provide support for autmatic restart of server process via [nodemon](https://github.com/remy/nodemon/)
+
+  After upgrade git diff:
+  * `scripts/develop.js`
+
 
 ## how to run tests
 
-1. define `mock-stemskeleton.json` into the repo's root folder
+1. create `mock-stemskeleton.json` into the repo's root folder
 
   ```
   $ cd organic-stem-devtools
@@ -121,12 +131,8 @@
   ```
   $ cd /full/path/to/stem-seed
   $ npm install angelscripts-stack-use organic-stem-skeleton
-  $
   $ angel stack use devtools &&
-  angel stack use devtools-client &&
-  angel stack use devtools-deploy &&
-  angel stack use devtools-less &&
-  angel stack use devtools-webpack &&
-  angel stack use devtools-browserify &&
+  $ git add --all && git commit
+  // angel stack use all devtools upgrades, this will cache node_modules deps
   git reset --hard HEAD
   ```
