@@ -34,9 +34,11 @@ module.exports = function (angel) {
   angel.on('deploy:setup', function (angel) {
     var sequence = require('organic-stem-devtools/lib/sequencial-exec')
     sequence([
+      'git checkout master',
       'git checkout -b develop',
+      'git push origin develop',
       'git checkout -b staging',
-      'git push',
+      'git push origin staging',
       'git checkout develop'
     ])
   })
