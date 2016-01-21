@@ -4,6 +4,7 @@ module.exports = function (angel) {
     var runPipeline = require('organic-stem-devtools/lib/gulp-pipeline')
     var format = require('organic-stem-devtools/node_modules/string-template')
     var path = require('path')
+    var watch = require('gulp-watch')
 
     var version = require(process.cwd() + '/package.json').version
     loadDNA(function (err, dna) {
@@ -19,7 +20,7 @@ module.exports = function (angel) {
           name: 'watchassets',
           src: asset.src,
           pipeline: [
-            // transformations on assets
+            watch(asset.src)
           ],
           dest: format(destPath, {version: version}),
           exitOnError: true
