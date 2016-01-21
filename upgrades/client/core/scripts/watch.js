@@ -17,7 +17,7 @@ module.exports = function (angel) {
       exec([
         'rm -rf ' + watchedDir,
         'ln -sf ' + watchedDir + ' ' + destLinkDir
-      ].join(' && '), function (err) {, function (err) {
+      ].join(' && '), function (err) {
         if (err) return next(err)
         console.info('linked ' + options.dest.watch + ' -> ' + options.dest.link)
 
