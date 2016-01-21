@@ -5,7 +5,7 @@
   "sourceNode": ". ~/.nvm/nvm.sh && nvm use v{nodeVersion}",
   "cwd": "~/{{{name}}}",
   "main": "index.js",
-  "source": "git url",
+  "source": "{{{git url}}}",
   "branch": "master",
   "origin": "origin",
   "runAngel": "CELL_MODE=_staging node ./node_modules/.bin/angel",
