@@ -1,0 +1,4 @@
+{
+  "build": "{sourceNode} && cd {cwd} && {runAngel} build",
+  "upgrade": "{pull} && {build} && {restart}"
+}
