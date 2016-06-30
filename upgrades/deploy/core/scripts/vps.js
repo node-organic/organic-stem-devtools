@@ -1,6 +1,6 @@
 module.exports = function (angel) {
   angel.on('vps setup :vpsPath', function (angel) {
-    var format = require('organic-stem-devtools/node_modules/string-template')
+    var format = require('organic-stem-devtools/string-template')
     var sequence = require('organic-stem-devtools/lib/sequencial-exec')
 
     var vpsConfig = require(angel.cmdData.vpsPath)

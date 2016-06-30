@@ -1,9 +1,10 @@
 module.exports = function (angel) {
   angel.on('rollback', function (angel, next) {
-    var format = require('organic-stem-devtools/node_modules/string-template')
+    var format = require('string-template')
     var sequence = require('organic-stem-devtools/lib/sequencial-exec')
     var loadDNA = require('organic-dna-loader')
     var path = require('path')
+    var isOSX = require('organic-stem-devtools/lib/os').isOSX
 
     var packagejson = require(path.join(process.cwd(), 'package.json'))
     var parts = packagejson.version.split('.')
@@ -22,7 +23,7 @@ module.exports = function (angel) {
         // checkout taggged version
         'git checkout v' + olderVersion,
         // re-link tagged version to destination link (default /public/release)
-        'ln -sf ' + path.join(cwd, destBuildPath) + ' ' + path.join(cwd, options.dest.link)
+        'ln ' + (isOSX ? '-sf' : '-sfT') + ' ' + path.join(cwd, destBuildPath) + ' ' + path.join(cwd, options.dest.link)
       ], next)
     })
   })
