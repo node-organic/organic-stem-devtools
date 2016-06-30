@@ -2,11 +2,11 @@ module.exports = function (angel) {
   angel.on('buildjs', function () {
     var loadDNA = require('organic-dna-loader')
     var runPipeline = require('organic-stem-devtools/lib/gulp-pipeline')
-    var webpack = require('webpack-stream')
-    var uglify = require('gulp-uglify')
-    var sourcemaps = require('gulp-sourcemaps')
+    var webpackStream = require('webpack-stream')
+    var webpack = require('webpack')
     var path = require('path')
-    var format = require('organic-stem-devtools/node_modules/string-template')
+    var format = require('string-template')
+    var glob2base = require('organic-stem-devtools/lib/glob2base')
 
     var version = require(process.cwd() + '/package.json').version
     loadDNA(function (err, dna) {
@@ -16,14 +16,22 @@ module.exports = function (angel) {
       if (options.js.webpack) {
         config = require(path.join(process.cwd(), options.js.webpack))
       }
+      config.devtool = '#source-map'
+      config.plugins.push(new webpack.optimize.UglifyJsPlugin({
+        compress: {
+          warnings: false,
+        },
+        output: {
+          comments: false,
+          semicolons: true,
+        }
+      }))
       runPipeline({
         name: 'buildjs',
-        src: options['js'].src,
+        src: path.join(process.cwd(), options['js'].src),
+        rootDir: path.join(process.cwd(), glob2base(options['js'].src)),
         pipeline: [
-          sourcemaps.init(),
-          webpack(config),
-          uglify(),
-          sourcemaps.write('./maps')
+          webpackStream(config)
         ],
         dest: format(options.dest.build, {version: version}),
         exitOnError: true
