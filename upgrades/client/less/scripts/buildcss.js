@@ -3,7 +3,9 @@ module.exports = function (angel) {
     var loadDNA = require('organic-dna-loader')
     var runPipeline = require('organic-stem-devtools/lib/gulp-pipeline')
     var less = require('gulp-less')
-    var format = require('organic-stem-devtools/node_modules/string-template')
+    var format = require('string-template')
+    var glob2base = require('organic-stem-devtools/lib/glob2base')
+    var path = require('path')
 
     var LessPluginAutoPrefix = require('less-plugin-autoprefix')
 
@@ -16,7 +18,8 @@ module.exports = function (angel) {
       // run the css pipeline on every bundle
       runPipeline({
         name: 'buildcss',
-        src: options['css'].src,
+        src: path.join(process.cwd(), options['css'].src),
+        rootDir: path.join(process.cwd(), glob2base(options['css'].src)),
         pipeline: [
           less({
             verbose: true,

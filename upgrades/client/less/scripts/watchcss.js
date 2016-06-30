@@ -6,8 +6,7 @@ module.exports = function (angel) {
     var lessWatcher = require('gulp-less-watcher')
     var globStream = require('glob-stream')
     var path = require('path')
-    var glob2base = require('organic-stem-devtools/node_modules/glob2base')
-    var glob = require('organic-stem-devtools/node_modules/glob')
+    var glob2base = require('organic-stem-devtools/lib/glob2base')
 
     var LessPluginAutoPrefix = require('less-plugin-autoprefix')
 
@@ -17,7 +16,7 @@ module.exports = function (angel) {
       var options = dna.client.build
 
       // workaround on gulp-less-watcher's ability to watch more than one src file
-      var srcRoot = glob2base(new glob.Glob(options['css'].src))
+      var srcRoot = glob2base(options['css'].src)
 
       globStream.create(options['css'].src)
         .on('data', function (file) {
@@ -31,6 +30,7 @@ module.exports = function (angel) {
           runPipeline({
             name: 'watchcss',
             src: file.path,
+            rootDir: path.join(process.cwd(), glob2base(options['css'].src)),
             pipeline: [
               lessWatcher(config),
               less(config)
