@@ -1,9 +1,9 @@
 {
   "name": "devtools-deploy",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "main": "core",
   "dependencies": {
-    "devtools": "^0.2.1"
+    "devtools": "^0.2.2"
   },
   "peerUpgrades": {
     "devtools-client": "client"

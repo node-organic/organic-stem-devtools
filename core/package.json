@@ -4,6 +4,6 @@
     "develop": "angel develop"
   },
   "dependencies": {
-    "organic-stem-devtools": "^0.2.1"
+    "organic-stem-devtools": "^0.2.2"
   }
 }
