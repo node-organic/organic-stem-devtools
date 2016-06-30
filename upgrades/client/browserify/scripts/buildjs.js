@@ -2,14 +2,14 @@ module.exports = function (angel) {
   angel.on('buildjs', function () {
     var loadDNA = require('organic-dna-loader')
     var browserify = require('browserify')
-    var gulp = require('organic-stem-devtools/node_modules/gulp')
+    var gulp = require('gulp')
     var source = require('vinyl-source-stream')
     var assign = require('lodash').assign
     var globby = require('globby')
     var uglify = require('gulp-uglify')
     var buffer = require('vinyl-buffer')
     var path = require('path')
-    var format = require('organic-stem-devtools/node_modules/string-template')
+    var format = require('string-template')
 
     var standardErrorHandler = require('organic-stem-devtools/lib/gulp-error-notifier')({
       name: 'buildjs'
