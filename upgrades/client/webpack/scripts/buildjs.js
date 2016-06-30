@@ -35,6 +35,7 @@ module.exports = function (angel) {
         config = require(path.join(process.cwd(), options.js.webpack))
       }
       config.devtool = '#source-map'
+      config.plugins = config.plugins || []
       config.plugins.push(new webpack.optimize.UglifyJsPlugin({
         compress: {
           warnings: false,

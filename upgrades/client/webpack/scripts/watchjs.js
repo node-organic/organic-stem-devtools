@@ -97,10 +97,9 @@ module.exports = function (angel) {
 
       var pattern = path.join(process.cwd(), srcRoot + angel.cmdData.part + srcFilename)
       globby(pattern).then(function (paths) {
-        var rootDir = glob2base(pattern)
         var entries = {}
         paths.forEach(function (p) {
-          entries[p.replace(rootDir, '')] = p
+          entries[p.replace(path.join(process.cwd(), srcRoot), '')] = p
         })
         config.entry = entries
         webpack(config).watch({}, webpackWatchHandler)
