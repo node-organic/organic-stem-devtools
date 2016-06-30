@@ -4,6 +4,7 @@ module.exports = function (angel) {
     var path = require('path')
     var loadDNA = require('organic-dna-loader')
     var parallel = require('organic-stem-devtools/lib/parallel-exec')
+    var isOSX = require('organic-stem-devtools/lib/os').isOSX
 
     // load configuration
     loadDNA(function (err, dna) {
@@ -16,7 +17,7 @@ module.exports = function (angel) {
       var destLinkDir = path.join(cwd, options.dest.link)
       exec([
         'rm -rf ' + watchedDir,
-        'ln -sf ' + watchedDir + ' ' + destLinkDir
+        'ln ' + (isOSX ? '-sf' : '-sfT') + ' ' + watchedDir + ' ' + destLinkDir
       ].join(' && '), function (err) {
         if (err) return next(err)
         console.info('linked ' + options.dest.watch + ' -> ' + options.dest.link)
@@ -29,5 +30,16 @@ module.exports = function (angel) {
         ], next)
       })
     })
+  })
+
+  angel.on('watch :part', function (angel, next) {
+    var parallel = require('organic-stem-devtools/lib/parallel-exec')
+
+    // run in parallel watch pipelines
+    parallel([
+      'node ./node_modules/.bin/angel watchjs "' + angel.cmdData.part + '"',
+      'node ./node_modules/.bin/angel watchcss',
+      'node ./node_modules/.bin/angel watchassets'
+    ], next)
   })
 }
