@@ -1,10 +1,29 @@
 module.exports = function (angel) {
   angel.on('watchjs', function () {
     var loadDNA = require('organic-dna-loader')
-    var runPipeline = require('organic-stem-devtools/lib/gulp-pipeline')
-    var webpack = require('webpack-stream')
+    var webpack = require('webpack')
     var path = require('path')
     var glob2base = require('organic-stem-devtools/lib/glob2base')
+    var globby = require('globby')
+    var standardErrorHandler = require('organic-stem-devtools/lib/gulp-error-notifier')({
+      name: 'watchjs'
+    })
+
+    var webpackWatchHandler = function (err, stats) {
+      if (err) return standardErrorHandler(err)
+      var jsonStats = stats.toJson()
+      if (jsonStats.errors.length > 0) {
+        return jsonStats.errors.map(standardErrorHandler)
+      }
+      if (jsonStats.warnings.length > 0) {
+        console.info(jsonStats.warnings.join('\n'))
+      }
+      console.info('watchjs', stats.toString({
+        chunks: false,
+        colors: false
+      }))
+      console.info('js build successfully')
+    }
 
     loadDNA(function (err, dna) {
       if (err) return console.error(err)
@@ -14,30 +33,50 @@ module.exports = function (angel) {
         config = require(path.join(process.cwd(), options.js.webpack))
       }
 
-      config.watch = true
       config.devtool = '#cheap-module-eval-source-map'
-
-      runPipeline({
-        name: 'watchjs',
-        src: path.join(process.cwd(), options['js'].src),
-        rootDir: path.join(process.cwd(), glob2base(options['js'].src)),
-        pipeline: [
-          webpack(config)
-        ],
-        dest: options.dest.watch
-      }).on('end', function () {
-        console.log('js watch successfully')
+      config.output = {
+        path: options.dest.watch,
+        filename: '[name]'
+      }
+      var pattern = path.join(process.cwd(), options['js'].src)
+      globby(pattern).then(function (paths) {
+        var rootDir = glob2base(pattern)
+        var entries = {}
+        paths.forEach(function (p) {
+          entries[p.replace(rootDir, '')] = p
+        })
+        config.entry = entries
+        webpack(config).watch({}, webpackWatchHandler)
       })
     })
   })
 
   angel.on('watchjs :part', function (angel) {
     var loadDNA = require('organic-dna-loader')
-    var runPipeline = require('organic-stem-devtools/lib/gulp-pipeline')
-    var webpack = require('webpack-stream')
+    var webpack = require('webpack')
     var path = require('path')
     var glob2base = require('organic-stem-devtools/lib/glob2base')
     var glob2filename = require('organic-stem-devtools/lib/glob2filename')
+    var globby = require('globby')
+    var standardErrorHandler = require('organic-stem-devtools/lib/gulp-error-notifier')({
+      name: 'watchjs'
+    })
+
+    var webpackWatchHandler = function (err, stats) {
+      if (err) return standardErrorHandler(err)
+      var jsonStats = stats.toJson()
+      if (jsonStats.errors.length > 0) {
+        return jsonStats.errors.map(standardErrorHandler)
+      }
+      if (jsonStats.warnings.length > 0) {
+        console.info(jsonStats.warnings.join('\n'))
+      }
+      console.info('watchjs', stats.toString({
+        chunks: false,
+        colors: false
+      }))
+      console.info('js build successfully')
+    }
 
     loadDNA(function (err, dna) {
       if (err) return console.error(err)
@@ -47,22 +86,24 @@ module.exports = function (angel) {
         config = require(path.join(process.cwd(), options.js.webpack))
       }
 
-      config.watch = true
       config.devtool = '#cheap-module-eval-source-map'
+      config.output = {
+        path: options.dest.watch,
+        filename: '[name]'
+      }
 
       var srcRoot = glob2base(options['js'].src)
       var srcFilename = glob2filename(options['js'].src)
 
-      runPipeline({
-        name: 'watchjs',
-        src: path.join(process.cwd(), srcRoot + angel.cmdData.part + srcFilename),
-        rootDir: path.join(process.cwd(), glob2base(options['js'].src)),
-        pipeline: [
-          webpack(config)
-        ],
-        dest: options.dest.watch
-      }).on('end', function () {
-        console.log('js watch successfully')
+      var pattern = path.join(process.cwd(), srcRoot + angel.cmdData.part + srcFilename)
+      globby(pattern).then(function (paths) {
+        var rootDir = glob2base(pattern)
+        var entries = {}
+        paths.forEach(function (p) {
+          entries[p.replace(rootDir, '')] = p
+        })
+        config.entry = entries
+        webpack(config).watch({}, webpackWatchHandler)
       })
     })
   })

@@ -1,12 +1,30 @@
 module.exports = function (angel) {
   angel.on('buildjs', function () {
     var loadDNA = require('organic-dna-loader')
-    var runPipeline = require('organic-stem-devtools/lib/gulp-pipeline')
-    var webpackStream = require('webpack-stream')
     var webpack = require('webpack')
     var path = require('path')
-    var format = require('string-template')
     var glob2base = require('organic-stem-devtools/lib/glob2base')
+    var format = require('string-template')
+    var globby = require('globby')
+    var standardErrorHandler = require('organic-stem-devtools/lib/gulp-error-notifier')({
+      name: 'buildjs'
+    })
+
+    var webpackRunHandler = function (err, stats) {
+      if (err) return standardErrorHandler(err)
+      var jsonStats = stats.toJson()
+      if (jsonStats.errors.length > 0) {
+        return jsonStats.errors.map(standardErrorHandler)
+      }
+      if (jsonStats.warnings.length > 0) {
+        console.info(jsonStats.warnings.join('\n'))
+      }
+      console.info('buildjs', stats.toString({
+        chunks: false,
+        colors: false
+      }))
+      console.info('js build successfully')
+    }
 
     var version = require(process.cwd() + '/package.json').version
     loadDNA(function (err, dna) {
@@ -23,20 +41,22 @@ module.exports = function (angel) {
         },
         output: {
           comments: false,
-          semicolons: true,
+          semicolons: true
         }
       }))
-      runPipeline({
-        name: 'buildjs',
-        src: path.join(process.cwd(), options['js'].src),
-        rootDir: path.join(process.cwd(), glob2base(options['js'].src)),
-        pipeline: [
-          webpackStream(config)
-        ],
-        dest: format(options.dest.build, {version: version}),
-        exitOnError: true
-      }).on('end', function () {
-        console.log('js build successfully')
+      config.output = {
+        path: format(options.dest.build, {version: version}),
+        filename: '[name]'
+      }
+      var pattern = path.join(process.cwd(), options['js'].src)
+      globby(pattern).then(function (paths) {
+        var rootDir = glob2base(pattern)
+        var entries = {}
+        paths.forEach(function (p) {
+          entries[p.replace(rootDir, '')] = p
+        })
+        config.entry = entries
+        webpack(config).run(webpackRunHandler)
       })
     })
   })
