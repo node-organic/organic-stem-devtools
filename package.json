@@ -6,19 +6,19 @@
   "scripts": {
     "test": "npm run test:style && mocha",
     "test:style": "eslint ./",
-    "release-patch": "npm run test:style && npm version patch && npm publish && git push --tags && git push origin master"
+    "release-patch": "npm run test:style && npm version patch && npm publish && git push --tags && git push origin master",
+    "release-minor": "npm run test:style && npm version minor && npm publish && git push --tags && git push origin master"
   },
   "author": "Boris Filipov",
   "license": "MIT",
   "dependencies": {
     "async": "^1.5.0",
-    "glob": "^6.0.1",
-    "glob2base": "0.0.12",
     "gulp": "^3.9.0",
     "gulp-debug": "^2.1.2",
     "gulp-util": "^3.0.7",
     "killprocess": "0.0.2",
     "node-notifier": "^4.4.0",
+    "node.os": "^1.1.1",
     "string-template": "^1.0.0",
     "vinyl-named": "^1.1.0"
   },
