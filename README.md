@@ -1,4 +1,4 @@
-# organic-stem-devtools v0.2.0
+# organic-stem-devtools v0.2.1
 
 `organic-stem-skeleton` upgrade providing command line tools for web development.
 
