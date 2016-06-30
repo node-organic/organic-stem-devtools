@@ -1,4 +1,4 @@
-# organic-stem-devtools
+# organic-stem-devtools v0.2.0
 
 `organic-stem-skeleton` upgrade providing command line tools for web development.
 
@@ -17,10 +17,8 @@ This upgrade provide support for developing a cell via
 
 ```
 $ angel develop
+$ angel develop pattern
 ```
-
-After upgrade git diff:
-* `scripts/develop.js`
 
 ### devtools-client
 
@@ -33,11 +31,8 @@ This upgrade provide support for building and watching frontend/client code via
 ```
 $ angel build
 $ angel watch
+$ angel watch pattern
 ```
-
-After upgrade git diff:
-* `scripts/build.js`
-* `scripts/watch.js`
 
 #### devtools-assets
 
@@ -52,11 +47,6 @@ $ angel buildassets
 $ angel watchassets
 ```
 
-After upgrade git diff:
-* `dna/client/build.json` -> `assets` section
-* `scripts/buildassets.js`
-* `scripts/watchassets.js`
-
 #### devtools-less
 
 ```
@@ -70,11 +60,6 @@ $ angel buildcss
 $ angel watchcss
 ```
 
-After upgrade git diff:
-* `dna/client/build.json` -> `css` section
-* `scripts/buildcss.js`
-* `scripts/watchcss.js`
-
 #### devtools-webpack
 
 ```
@@ -86,12 +71,8 @@ This upgrade provide support for `*.bundle.js` files via [webpack](https://githu
 ```
 $ angel buildjs
 $ angel watchjs
+$ angel watchjs pattern
 ```
-
-After upgrade git diff:
-* `dna/client/build.json` -> `js` section
-* `scripts/buildjs.js`
-* `scripts/watchjs.js`
 
 #### devtools-browserify
 
@@ -104,12 +85,8 @@ This upgrade provide support for `*.bundle.js` files via [browserify](https://gi
 ```
 $ angel buildjs
 $ angel watchjs
+$ angel watchjs pattern
 ```
-
-After upgrade git diff:
-* `dna/client/build.json` -> `js` section
-* `scripts/buildjs.js`
-* `scripts/watchjs.js`
 
 ### devtools-deploy
 
@@ -128,12 +105,8 @@ $ angel cell rollback ./dna/_staging/cell.json
 $ angel cell uninstall ./dna/_staging/cell.json
 ```
 
-After upgrade git diff:
-* `dna/_production` folder
-* `dna/_staging` folder
-* `scripts/deploy.js`
-* `scripts/vps.js`
-* `scripts/rollback.js`
+Related angelscripts:
+
 * [angelscripts-cellcmds](https://github.com/outbounder/angelscripts-cellcmds) package
 * [angelscripts-nginx](https://github.com/outbounder/angelscripts-nginx) package
 
@@ -149,9 +122,6 @@ This upgrade provide support for autmatic restart of server process via [nodemon
 ```
 $ angel develop
 ```
-
-After upgrade git diff:
-* `scripts/develop.js`
 
 
 ## how to run tests

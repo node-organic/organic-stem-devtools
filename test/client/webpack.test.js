@@ -31,5 +31,13 @@ describe('devtools-client', function () {
         next()
       })
     })
+    it('$angel watchjs part', function (next) {
+      var child = stemCell.exec('angel watchjs /')
+      child.stdout.once('data', function (chunk) {
+        // TODO buffer until expect(...).to.contain('js watch successfully')
+        stemCell.forceExit(child)
+        next()
+      })
+    })
   })
 })
