@@ -18,7 +18,7 @@
     "gulp-util": "^3.0.7",
     "killprocess": "0.0.2",
     "node-notifier": "^4.4.0",
-    "node.os": "^1.1.1",
+    "node.os": "1.1.1",
     "string-template": "^1.0.0",
     "vinyl-named": "^1.1.0"
   },
