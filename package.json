@@ -1,6 +1,6 @@
 {
   "name": "organic-stem-devtools",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "main": "index.js",
   "description": "`organic-stem-skeleton` upgrade providing command line tools for web development.",
   "scripts": {
