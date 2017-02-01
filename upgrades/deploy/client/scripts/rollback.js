@@ -27,4 +27,7 @@ module.exports = function (angel) {
       ], next)
     })
   })
+  .example('angel rollback')
+  .description('1. locally checkouts to the PREVIOUS minor version - X.Y.(Z-1).\n' +
+               '2. Updates the symlink to the lastest client build ("/public/release" by default).')
 }
