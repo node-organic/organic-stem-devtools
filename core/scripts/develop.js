@@ -3,7 +3,7 @@ module.exports = function (angel) {
     process.env.CELL_MODE = process.env.CELL_MODE || '_development'
     var parallel = require('organic-stem-devtools/lib/parallel-exec')
     parallel([
-      'node watch',
+      'node ./node_modules/.bin/angel watch',
       'node ./index.js'
     ])
   })
@@ -15,7 +15,7 @@ module.exports = function (angel) {
     process.env.CELL_MODE = process.env.CELL_MODE || '_development'
     var parallel = require('organic-stem-devtools/lib/parallel-exec')
     parallel([
-      'node watch "' + angel.cmdData.part + '"',
+      'node ./node_modules/.bin/angel watch "' + angel.cmdData.part + '"',
       'node ./index.js'
     ])
   })
