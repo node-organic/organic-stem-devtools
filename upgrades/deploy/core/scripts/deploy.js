@@ -12,6 +12,8 @@ module.exports = function (angel) {
       'node ./node_modules/.bin/angel cell upgrade ./dna/_production/cell.json'
     ])
   })
+  .example('angel deploy production')
+  .description('deploys to the production enviornment (defined by "dna/_production/cell.json") without bumping the semver')
 
   angel.on('deploy staging', function (angel) {
     var sequence = require('organic-stem-devtools/lib/sequencial-exec')
@@ -30,6 +32,8 @@ module.exports = function (angel) {
       'node ./node_modules/.bin/angel cell upgrade ./dna/_staging/cell.json'
     ])
   })
+  .example('angel deploy staging')
+  .description('deploys to the production enviornment (defined by "dna/_staging/cell.json") while BUMPING the MINOR semver (npm version patch)')
 
   angel.on('deploy:setup', function (angel) {
     var sequence = require('organic-stem-devtools/lib/sequencial-exec')
@@ -42,4 +46,6 @@ module.exports = function (angel) {
       'git checkout develop'
     ])
   })
+  .example('angel deploy setup')
+  .description('locally checkouts the "develop" and "staging" branches from "master" and pushes them to the remote')
 }

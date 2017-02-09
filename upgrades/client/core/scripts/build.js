@@ -31,4 +31,9 @@ module.exports = function (angel) {
       })
     })
   })
+  .example('angel build')
+  .description('runs the client\'s build pipelines:\n' +
+               '\t JavaScript (angel buildjs)\n' +
+               '\t CSS (angel buildcss)\n' +
+               '\t Assets (angel buildassets)')
 }

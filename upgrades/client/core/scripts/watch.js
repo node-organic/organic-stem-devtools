@@ -31,6 +31,11 @@ module.exports = function (angel) {
       })
     })
   })
+  .example('angel build')
+  .description('runs the client\'s watch pipelines:\n' +
+               '\t JavaScript (angel watchjs)\n' +
+               '\t CSS (angel watchcss)\n' +
+               '\t Assets (angel watchassets)')
 
   angel.on('watch :part', function (angel, next) {
     var parallel = require('organic-stem-devtools/lib/parallel-exec')
@@ -42,4 +47,9 @@ module.exports = function (angel) {
       'node ./node_modules/.bin/angel watchassets'
     ], next)
   })
+  .example('angel watch ')
+  .description('runs the client\'s watch pipelines, watching only the ":part" part javascript:\n' +
+               '\t Partial JavaScript (angel watchjs :part)\n' +
+               '\t CSS (angel watchcss)\n' +
+               '\t Assets (angel watchassets)')
 }

@@ -12,4 +12,6 @@ module.exports = function (angel) {
       'git checkout v' + olderVersion // checkout taggged version
     ], next)
   })
+  .example('angel rollback')
+  .description('Locally checkouts to the PREVIOUS minor version - X.Y.(Z-1).')
 }
