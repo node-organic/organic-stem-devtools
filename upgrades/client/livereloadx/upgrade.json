@@ -1,0 +1,9 @@
+{
+  "name": "devtools-client-livereloadx",
+  "version": "0.2.2",
+  "main": "core",
+  "dependencies": {
+    "devtools-client": "^0.2.2"
+  },
+  "readme": "./README.md"
+}
