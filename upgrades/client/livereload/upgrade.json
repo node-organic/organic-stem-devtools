@@ -1,9 +1,13 @@
 {
-  "name": "devtools-client-livereloadx",
+  "name": "devtools-client-livereload",
   "version": "0.2.2",
   "main": "core",
   "dependencies": {
     "devtools-client": "^0.2.2"
+  },
+  "peerUpgrades": {
+    "ejs-pages": "peer/pages",
+    "jade-pages": "peer/pages"
   },
   "readme": "./README.md"
 }

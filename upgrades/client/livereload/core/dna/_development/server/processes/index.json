@@ -1,0 +1,11 @@
+{
+  "plasma": {
+    "livereload": {
+      "source": "./server/plasma/livereload",
+      "livereloadScriptUrl": "/livereload",
+      "watchTargetDirectories": ["./build"],
+      "sseEndpoint": "/sse",
+      "reactOnExpressServer": "ExpressServer"
+    }
+  }
+}
