@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "gulp-watch": "5.0.0",
+    "string-template": "1.0.0",
+    "globby": "8.0.1",
+    "webpack": "4.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "1.17.1"
+  }
+}

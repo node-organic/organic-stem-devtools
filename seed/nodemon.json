@@ -1,0 +1,3 @@
+{
+  "ignore": ["webapps/**/*", "scripts/**/*", "public/**/*", "uploads/**/*", "build/**/*"]
+}

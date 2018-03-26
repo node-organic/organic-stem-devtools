@@ -1,14 +1,15 @@
 {
   "extends": "standard",
+  "parserOptions": {
+    "ecmaVersion": 2017
+  },
   "rules": {
-    "comma-dangle": [0]
+    "comma-dangle": [0],
+    "camelcase": [0]
   },
   "globals": {
-    "StemSkeleton": true,
+    "test": true,
     "expect": true,
-    "describe": true,
-    "it": true,
-    "before": true,
-    "after": true
+    "jest": true
   }
 }

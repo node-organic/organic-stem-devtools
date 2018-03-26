@@ -1,7 +1,0 @@
-{
-  "name": "devtools-browserify",
-  "version": "0.2.2",
-  "dependencies": {
-    "devtools-client": "^0.2.2"
-  }
-}

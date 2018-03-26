@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "gulp-watch": "4.3.5",
-    "string-template": "^1.0.0"
-  }
-}

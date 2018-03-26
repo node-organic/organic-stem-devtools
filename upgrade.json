@@ -1,8 +1,0 @@
-{
-  "name": "devtools",
-  "version": "0.2.2",
-  "main": "core",
-  "dependencies": {
-    "core": "0.1.0"
-  }
-}

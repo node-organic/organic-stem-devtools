@@ -1,3 +1,4 @@
 /node_modules
 /mock-stemskeleton.json
 npm-debug.log
+.DS_Store

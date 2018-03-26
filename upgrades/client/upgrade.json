@@ -1,8 +1,0 @@
-{
-  "name": "devtools-client",
-  "version": "0.2.2",
-  "main": "core",
-  "dependencies": {
-    "devtools": "^0.2.2"
-  }
-}

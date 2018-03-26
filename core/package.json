@@ -1,9 +1,0 @@
-{
-  "scripts": {
-    "start": "node index.js",
-    "develop": "angel develop"
-  },
-  "dependencies": {
-    "organic-stem-devtools": "^0.2.2"
-  }
-}

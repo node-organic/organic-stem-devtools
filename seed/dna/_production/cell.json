@@ -1,0 +1,47 @@
+{
+  "name": "trelloassista-staging",
+  "remote": "ssh node@???",
+  "nodeVersion": "4.2.3",
+  "sourceNode": ". ~/.nvm/nvm.sh && nvm use &{nodeVersion}",
+  "cwd": "~/trelloassista-staging",
+  "main": "index.js",
+  "source": "git@github.com:camplight/trello-assistant.git",
+  "branch": "_staging",
+  "origin": "origin",
+  "CELLMODE": "_staging",
+  "setup-reboot": "&{sourceNode} && pm2 startup",
+  "install": "mkdir -p &{cwd} && cd &{cwd} && git clone &{source} . && &{sourceNode} && npm install --production",
+  "start": [
+    "@_staging.http-cell.start",
+    "@_staging.trello-sync-cron-cell.start",
+    "@_staging.slackbot-cell.start",
+    "@_staging.ondemand-analytics.start",
+    "@_staging.process-incoming-boards.start",
+    "@_staging.maintain-assista-cards.start"
+  ],
+  "restart": [
+    "@_staging.http-cell.restart",
+    "@_staging.trello-sync-cron-cell.restart",
+    "@_staging.slackbot-cell.restart",
+    "@_staging.ondemand-analytics.restart",
+    "@_staging.process-incoming-boards.restart",
+    "@_staging.maintain-assista-cards.restart"
+  ],
+  "upgrade": [
+    "@_staging.http-cell.upgrade",
+    "@_staging.trello-sync-cron-cell.upgrade",
+    "@_staging.slackbot-cell.upgrade",
+    "@_staging.ondemand-analytics.upgrade",
+    "@_staging.process-incoming-boards.upgrade",
+    "@_staging.maintain-assista-cards.upgrade"
+  ],
+  "stop": [
+    "@_staging.http-cell.stop",
+    "@_staging.trello-sync-cron-cell.stop",
+    "@_staging.slackbot-cell.stop",
+    "@_staging.ondemand-analytics.stop",
+    "@_staging.process-incoming-boards.stop",
+    "@_staging.maintain-assista-cards.stop"
+  ],
+  "status": "&{sourceNode} && pm2 list"
+}
